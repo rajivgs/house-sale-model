@@ -1,0 +1,16 @@
+apiVersion: serving.kubeflow.org/v1
+kind: InferenceService
+metadata:
+  name: my-model
+spec:
+  predictor:
+    tensorflow:
+      storageUri: "/home/rajivgs/Pictures/house-sale-model"
+  default:
+    predictor:
+      tensorflow:
+        serviceAccountName: your-service-account
+    containers:
+      - image: docker.io/rajivgs/python-ml:v1
+        name: model-container
+
